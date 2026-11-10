@@ -12,14 +12,14 @@
 | --- | --- |
 | `origin` | 项目仓库 `NonTrivialLiu/power-system-harness`，默认推送目标 |
 | `upstream` | DeepSeek 官方仓库，仅拉取 |
-| `main` | 商业开发主分支，跟踪 `origin/main` |
+| `master` | 商业开发主分支，跟踪 `origin/master` |
 | `upstream-base` | 最近已合入主分支的纯上游版本，跟踪 `origin/upstream-base` |
 | `upstream/master` | 官方开发分支的本地跟踪引用，用于查看尚未接纳的变化 |
 
 ```text
 DeepSeek release A ----- release B
           |                 |
-          +-- main -------- merge -- 商业开发
+          +-- master ----- merge -- 商业开发
                             |
                       upstream-base
 ```
@@ -51,8 +51,8 @@ git branch --track upstream-base origin/upstream-base
 以下流程从干净的工作区开始，先同步项目主分支和官方发布标签，再查看当前上游起点到目标版本的差异。将示例版本变量替换为已经选定的发布标签：
 
 ```sh
-git switch main
-git pull --ff-only origin main
+git switch master
+git pull --ff-only origin master
 git fetch origin upstream-base
 git fetch upstream --tags
 release_tag=dsh-vX.Y.Z
@@ -62,27 +62,27 @@ git switch -c "upgrade/$release_tag"
 git merge --no-ff --no-commit "$release_tag"
 ```
 
-解决冲突后，按 [上游检查指南](.agents/skills/dsh-pre-push-checks/SKILL.md) 验证受影响功能，再提交合并并推送升级分支，创建面向 `main` 的 PR。采用 merge commit 合并该 PR，保留上游祖先关系。若放弃这次尚未提交的合并，可执行 `git merge --abort`。
+解决冲突后，按 [上游检查指南](.agents/skills/dsh-pre-push-checks/SKILL.md) 验证受影响功能，再提交合并并推送升级分支，创建面向 `master` 的 PR。采用 merge commit 合并该 PR，保留上游祖先关系。若放弃这次尚未提交的合并，可执行 `git merge --abort`。
 
-升级 PR 合并后，将纯上游分支快进至同一发布标签；该分支保持官方代码，商业提交留在 `main`：
+升级 PR 合并后，将纯上游分支快进至同一发布标签；该分支保持官方代码，商业提交留在 `master`：
 
 ```sh
-git switch main
-git pull --ff-only origin main
-git merge-base --is-ancestor "$release_tag" main
+git switch master
+git pull --ff-only origin master
+git merge-base --is-ancestor "$release_tag" master
 git switch upstream-base
 git pull --ff-only origin upstream-base
 git merge --ff-only "$release_tag"
 git push origin upstream-base
-git switch main
+git switch master
 ```
 
 祖先检查失败时先核对 PR 合并方式与目标版本；快进失败时先核对上游发布历史和分支状态，再决定如何处理。
 
 ## 发布与许可
 
-GitHub Actions 已开启。PR CI 默认使用标准 Ubuntu 和 Windows runner，主分支工作流跟踪 `main`，自托管备用机仅在对应的 `DSH_CI_FAILOVER_LINUX` 或 `DSH_CI_FAILOVER_WINDOWS` 变量为 `selfhosted` 时运行。公开仓库的标准 GitHub 托管 runner 免费；大规格 runner 和存储的计费规则见 [GitHub Actions billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions)。
+GitHub Actions 已开启。PR CI 默认使用标准 Ubuntu 和 Windows runner，主分支工作流跟踪 `master`，自托管备用机仅在对应的 `DSH_CI_FAILOVER_LINUX` 或 `DSH_CI_FAILOVER_WINDOWS` 变量为 `selfhosted` 时运行。公开仓库的标准 GitHub 托管 runner 免费；大规格 runner 和存储的计费规则见 [GitHub Actions billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions)。
 
-[文档部署](.github/workflows/docs-pages.yml) 使用标准 Ubuntu runner，可从 `main` 手动运行并部署到本仓库的 GitHub Pages。[真实 API 测试](.github/workflows/e2e.yml) 由仓库变量 `DSH_E2E_ENABLED=true` 启用，并需要 `DEEPSEEK_API_KEY_EXTERNAL`。上游 npm 发布和桌面发布流程保持手动入口，正式发布前配置本项目的包名、分发地址、签名及凭据。
+[文档部署](.github/workflows/docs-pages.yml) 使用标准 Ubuntu runner，可从 `master` 手动运行并部署到本仓库的 GitHub Pages。[真实 API 测试](.github/workflows/e2e.yml) 由仓库变量 `DSH_E2E_ENABLED=true` 启用，并需要 `DEEPSEEK_API_KEY_EXTERNAL`。上游 npm 发布和桌面发布流程保持手动入口，正式发布前配置本项目的包名、分发地址、签名及凭据。
 
 上游代码采用 [MIT](LICENSE)，允许商业使用、修改和分发；分发包含其代码的副本或实质部分时，保留版权与许可声明。第三方组件的许可见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)，产品名称与宣传材料参考 [品牌指南](BRAND_GUIDELINES.md)。

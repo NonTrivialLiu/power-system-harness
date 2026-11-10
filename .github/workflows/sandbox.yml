@@ -10,7 +10,7 @@ name: Sandbox
 
 on:
   push:
-    branches: [main]
+    branches: [master]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
