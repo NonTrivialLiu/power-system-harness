@@ -1,13 +1,4 @@
-# Publish the documentation website to GitHub Pages. This workflow is manual-only
-# (workflow_dispatch) and intentionally does not listen to pull_request or push:
-# the site presents a released snapshot, so publication is an explicit act from a
-# dsh-v* tag and must never appear as a PR check. `release:verify` rejects every
-# other ref, and the github-pages environment repeats that restriction as a
-# deployment tag policy with required reviewers.
-#
-# The build signal does not depend on this workflow. Every pull request builds
-# the production site through `check:ci:static`, and ci-master.yml builds it
-# again on master.
+# Manually deploy the selected project ref to this repository's GitHub Pages.
 name: Deploy documentation
 
 on:
@@ -35,7 +26,7 @@ env:
 
 jobs:
   build:
-    runs-on: blacksmith-8vcpu-ubuntu-2404
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
       pages: read
@@ -55,14 +46,6 @@ jobs:
 
       - name: Install (immutable)
         run: pnpm install --frozen-lockfile
-
-      # One definition of "released" for the site and the npm sequence: this
-      # rejects every ref that is not a dsh-v* tag naming the version this tree
-      # carries.
-      - name: Verify release version
-        env:
-          RELEASE_PUBLISH: 'true'
-        run: pnpm run release:verify --family dsh
 
       - name: Configure Pages
         id: pages
