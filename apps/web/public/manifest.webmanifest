@@ -1,6 +1,6 @@
 {
-  "name": "DeepSeek Harness",
-  "short_name": "DSH",
+  "name": "PowerSys Harness",
+  "short_name": "PSH",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

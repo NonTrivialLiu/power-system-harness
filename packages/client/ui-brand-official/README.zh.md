@@ -27,7 +27,15 @@ kind: "package-reference"
 
 在 Power System Harness 部署中，将本插件加入浏览器插件列表。
 
-产品正式名称为 **Power System Harness**，简称 **PSH**。界面字标固定写作 **powersys HARNESS**，其中 `powersys` 使用小写，`HARNESS` 为大写徽标。
+各界面使用固定的产品名称——它们是不同的名字，不是同一名词的拼写变体：
+
+- **Power System Harness** —— 散文中的正式名称。
+- **PowerSys Harness** —— 运行显示名：浏览器标题、欢迎窗品牌文字、预览说明、PWA 名称。
+- **PSH Desktop** —— 桌面应用名：安装包与可执行文件名、菜单、托盘、关于与更新弹窗。
+- **PSH** —— 简称：实例冲突提示、PWA 简称；本地构建标签为 `PSH Local Build`。
+- **powersys HARNESS** —— 字标图形的固定大小写。
+
+DeepSeek 模型、账号服务等提供方名称不是产品名，保持原有拼写。
 
 品牌注册与 `DSH_CLIENT_BUILD_PROFILE` 无关。本插件占据侧栏 slot 时，外壳的本地构建标签和构建版本徽标由项目品牌替代。会话首屏使用 `dsh-client-ui-conversation` 中的共用项目图标和 CSS 悬停动效。
 

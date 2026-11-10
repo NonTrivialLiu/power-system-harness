@@ -27,7 +27,15 @@ This package displays the Power System Harness mark and wordmark in the sidebar.
 
 Mount this plugin in the browser roster of a Power System Harness deployment.
 
-The formal product name is **Power System Harness**, abbreviated **PSH**. The UI wordmark is fixed as **powersys HARNESS**: lowercase `powersys`, uppercase `HARNESS` badge.
+Product names are fixed per surface — distinct names, not spelling variants of one another:
+
+- **Power System Harness** — the formal name used in prose.
+- **PowerSys Harness** — the running display name: browser title, welcome window text, preview notice, PWA name.
+- **PSH Desktop** — the desktop app name: bundle and executable names, menus, tray, about and update dialogs.
+- **PSH** — the abbreviation: instance-conflict notices, PWA short name; local-build labels read `PSH Local Build`.
+- **powersys HARNESS** — the wordmark artwork casing.
+
+Provider names such as DeepSeek models and account services are not product names; they keep their own spellings.
 
 Brand registration is independent of `DSH_CLIENT_BUILD_PROFILE`. While this plugin occupies the sidebar slots, the shell's local-build label and build-version badge are replaced by the project brand. The conversation hero uses the shared project mark and CSS hover motion from `dsh-client-ui-conversation`.
 

@@ -1,6 +1,6 @@
-DeepSeek Harness
-DeepSeek Harness
-Welcome to DeepSeek Harness
+PSH Desktop
+PowerSys Harness
+Welcome to PowerSys Harness
 Build potential. Explore intelligence.
 Sign in
 Add API Key
