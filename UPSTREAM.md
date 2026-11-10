@@ -2,6 +2,8 @@
 
 ## 仓库与版本
 
+当前接纳版本为 [dsh-v0.2.2-rc.1](https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.2-rc.1)，发布于 2026-11-04。
+
 本项目是面向电力系统的公开衍生仓库，保留 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 的 Git 历史，通过 Git remote 同步上游。
 
 初始版本为 [dsh-v0.2.1-rc.5](https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.1-rc.5)，发布于 2026-10-30。截至 2026-11-10，上游全部 GitHub Release 均为预发布，npm 也没有正式版本；这个固定候选版作为商业开发起点，运行稳定性仍需按实际业务验证。后续版本从 [官方发布记录](https://github.com/deepseek-ai/deepseek-harness/releases) 选择，优先正式发布；接纳候选版时明确记录版本。
