@@ -22,7 +22,7 @@ describe('RunningWhaleTail', () => {
     expect(svg.getAttribute('viewBox')).toBe('0 0 16 16')
     expect(svg.querySelectorAll('path')).toHaveLength(1)
     expect(svg.querySelector('path')?.getAttribute('d')).toMatch(/^M/)
-    expect(svg.querySelector('path')?.getAttribute('stroke')).toBe('currentColor')
+    expect(svg.querySelector('path')?.getAttribute('fill')).toBe('currentColor')
     expect(view.container.querySelector('animate')).toBeNull()
     expect(view.container.querySelector('[style]')).toBeNull()
   })

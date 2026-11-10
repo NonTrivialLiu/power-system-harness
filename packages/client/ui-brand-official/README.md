@@ -1,5 +1,5 @@
 ---
-description: "Official DeepSeek Harness brand occupants for the sidebar, active only in official builds; for users and maintainers choosing or replacing brand presentation."
+description: "Power System Harness sidebar branding for users and maintainers choosing or replacing brand presentation."
 kind: "package-reference"
 ---
 
@@ -9,7 +9,7 @@ English | [中文](README.zh.md)
 
 ## Summary
 
-This package gives an `official` client build the DeepSeek Harness mark and name in the sidebar. Other build profiles keep the shell's fish mark and local-build label, while the conversation hero always uses the animated fish. Choose it for deployments branded as DeepSeek Harness; deployments with another identity should provide a replacement brand package. It has no runtime state and does not affect model requests.
+This package displays the Power System Harness mark and wordmark in the sidebar.
 
 ## Table of Contents
 
@@ -25,11 +25,11 @@ This package gives an `official` client build the DeepSeek Harness mark and name
 <a id="use-this-package"></a>
 ## Use this package
 
-Mount this plugin in the browser roster of a deployment whose identity is DeepSeek's own, then build the client with the `official` profile so the occupants register.
+Mount this plugin in the browser roster of a Power System Harness deployment.
 
-### Choosing the profile
+The formal product name is **Power System Harness**, abbreviated **PSH**. The UI wordmark is fixed as **powersys HARNESS**: lowercase `powersys`, uppercase `HARNESS` badge.
 
-`DSH_CLIENT_BUILD_PROFILE` selects which brand renders. An `official` build shows the official mark and name in the sidebar; any other value leaves the shell fallbacks — the fish mark and the local-build label — in place. The conversation hero shows the animated hero fish from `dsh-client-ui-conversation` regardless of profile, because that fallback is already the official mark. The plugin still loads and validates in both cases; only the registration is profile-gated.
+Brand registration is independent of `DSH_CLIENT_BUILD_PROFILE`. While this plugin occupies the sidebar slots, the shell's local-build label and build-version badge are replaced by the project brand. The conversation hero uses the shared project mark and CSS hover motion from `dsh-client-ui-conversation`.
 
 ### Replacing the brand
 

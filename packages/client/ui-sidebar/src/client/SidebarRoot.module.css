@@ -267,7 +267,7 @@
 .brandIdentity {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 2px;
   height: 24px;
   min-width: 0;
 }
@@ -277,6 +277,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  /* Match the full wordmark's optical center in the 24px brand row. */
+  translate: 0 0.5px;
 }
 
 .brandName {

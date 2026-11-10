@@ -1,4 +1,4 @@
-/* NEW SESSION hero (figma Input_Bottom 75:8208): fish + title, workspace chip
+/* NEW SESSION hero (figma Input_Bottom 75:8208): mark + title, workspace chip
    above the shared InputBar card. The input itself is InputBar — only stack
    geometry and the chip live here. */
 
@@ -23,17 +23,17 @@
   overflow: visible;
 }
 
-/* figma 34:10411: fish + title, gap 10, centered; 26/32 wt500. The preview
+/* figma 34:10411: mark + title, gap 10, centered; 26/32 wt500. The preview
    badge is a product addition outside that source: a mono superscript pill
    riding the title's top-right. */
 .headline {
   display: flex;
-  /* Overflow-driven: the fish and the title group are two wrap units sharing
-     one centered line while they fit; squeezed, the fish takes its own line
+  /* Overflow-driven: the mark and the title group are two wrap units sharing
+     one centered line while they fit; squeezed, the mark takes its own line
      above the group. No breakpoint. */
   flex-wrap: wrap;
   column-gap: 10px;
-  /* Wrapped, the fish sits on its own line; more air than the 10px side gap
+  /* Wrapped, the mark sits on its own line; more air than the 10px side gap
      keeps it reading as a mark above the title, not a squeezed inline glyph. */
   row-gap: 12px;
   align-items: center;
@@ -76,7 +76,7 @@
 }
 
 /* Keep hover detection on a stationary box while the mark moves within it;
-   hover rules target the hitbox so a slot-occupant mark swims too. */
+   hover rules target the hitbox so a slot-occupant mark sways too. */
 .fishHitbox {
   display: inline-flex;
   flex: none;
@@ -84,9 +84,7 @@
   justify-content: center;
 }
 
-/* The swim morph's curves poke slightly past the viewBox edges, so clipping
-   would slice the tail mid-wag. The hero mark stays in the same primary ink
-   as its headline. */
+/* The brand mark shares the headline ink and keeps its hover sway unclipped. */
 .fish {
   display: block;
   overflow: visible;
@@ -94,10 +92,7 @@
   color: var(--dsw-alias-label-primary);
 }
 
-/* Hover swim: a slow continuous sway about the body center — the head
-   (left) lifts as the whale rises, then settles back with a small
-   counter-tilt, like treading water. Negative rotation = head up (the head
-   is the left half; origin 50% 60%). */
+/* Hover motion stays centered within the stationary brand hitbox. */
 @keyframes hero-fish-swim {
   0%,
   100% {

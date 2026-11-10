@@ -1,5 +1,5 @@
 ---
-description: "面向侧栏的官方 DeepSeek Harness 品牌填充，仅在官方构建中生效；供选择或替换品牌呈现的用户与维护者阅读。"
+description: "Power System Harness 侧栏品牌展示；供选择或替换品牌呈现的用户与维护者阅读。"
 kind: "package-reference"
 ---
 
@@ -9,7 +9,7 @@ kind: "package-reference"
 
 ## 概述
 
-本包让以 `official` profile 构建的客户端在侧栏显示 DeepSeek Harness 标志与名称。其他构建 profile 保留外壳的鱼形标志与本地构建标签，会话首屏则始终使用动画鱼。品牌为 DeepSeek Harness 的部署应选择本包；使用其他品牌的部署应提供替代品牌包。本包不保留运行时状态，也不影响模型请求。
+本包在侧栏显示 Power System Harness 图标与字标。
 
 ## 目录
 
@@ -25,11 +25,11 @@ kind: "package-reference"
 <a id="use-this-package"></a>
 ## 使用本包
 
-在采用 DeepSeek 自有品牌的部署中，将本插件挂载到浏览器插件名单，然后以 `official` profile 构建客户端，让填充得以注册。
+在 Power System Harness 部署中，将本插件加入浏览器插件列表。
 
-### 选择 profile
+产品正式名称为 **Power System Harness**，简称 **PSH**。界面字标固定写作 **powersys HARNESS**，其中 `powersys` 使用小写，`HARNESS` 为大写徽标。
 
-`DSH_CLIENT_BUILD_PROFILE` 决定渲染哪个品牌。`official` 构建在侧栏显示官方标志与名称；任何其他取值都让外壳回退——鱼形标志与本地构建标签——保持原样。会话首屏无论 profile 如何都显示来自 `dsh-client-ui-conversation` 的动画首屏鱼，因为这个回退本身就是官方标志。两种情况下插件都会照常加载并通过校验；只有注册受 profile 门控。
+品牌注册与 `DSH_CLIENT_BUILD_PROFILE` 无关。本插件占据侧栏 slot 时，外壳的本地构建标签和构建版本徽标由项目品牌替代。会话首屏使用 `dsh-client-ui-conversation` 中的共用项目图标和 CSS 悬停动效。
 
 ### 替换品牌
 
